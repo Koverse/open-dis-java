@@ -79,7 +79,8 @@ public enum PduType
   RECORD_QUERY_R(65, "Record Query-R"),
   COLLISION_ELASTIC(66, "Collision-Elastic"),
   ENTITY_STATE_UPDATE(67, "Entity State Update"),
-  IFF(68, "Identification Friend or Foe");
+  DIRECTED_ENERGY_FIRE(68, "Directed Energy Fire"),
+  ENTITY_DAMAGE_STATUS(69, "Entity Damage Status");
 
   public final int value;
   public final String description;

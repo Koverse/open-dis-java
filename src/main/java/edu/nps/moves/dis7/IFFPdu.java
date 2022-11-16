@@ -19,7 +19,7 @@ public class IFFPdu extends DistributedEmissionsFamilyPdu implements Serializabl
   protected FundamentalOperationalData fundamentalParameters = new FundamentalOperationalData();
 
   public IFFPdu() {
-    this.setPduType((short)68);
+    this.setPduType((short)28);
   }
 
   public int getMarshalledSize()
