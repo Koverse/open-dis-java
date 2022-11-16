@@ -84,7 +84,7 @@ public enum PduType
 
   public final int value;
   public final String description;
-  public static PduType[] lookup = new PduType[69];
+  public static PduType[] lookup = new PduType[71];
   private static HashMap<Integer, PduType> enumerations = new HashMap();
 
   private PduType(int value, String description) {
