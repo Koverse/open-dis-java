@@ -3,14 +3,7 @@
 // (powered by FernFlower decompiler)
 //
 
-package edu.nps.moves.dis;
-
-import edu.nps.moves.dis7.DistributedEmissionsFamilyPdu;
-import edu.nps.moves.dis7.EntityID;
-import edu.nps.moves.dis7.EventIdentifier;
-import edu.nps.moves.dis7.FundamentalOperationalData;
-import edu.nps.moves.dis7.SystemIdentifier;
-import edu.nps.moves.dis7.Vector3Float;
+package edu.nps.moves.dis7;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
