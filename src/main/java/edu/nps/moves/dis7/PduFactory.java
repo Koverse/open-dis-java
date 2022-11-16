@@ -54,7 +54,7 @@ import edu.nps.moves.dis7.StopFreezePdu;
 import edu.nps.moves.dis7.StopFreezeReliablePdu;
 import edu.nps.moves.dis7.TransmitterPdu;
 import edu.nps.moves.dis7.UaPdu;
-import edu.nps.moves.disenum.PduType;
+import edu.nps.moves.dis7.PduType;
 
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
