@@ -113,7 +113,7 @@ public enum PduType
       }
     }
 
-    System.err.println("No enumeration found for value " + i + " of enumeration DISPDUType");
+    System.err.println("No enumeration found for value " + i + " of enumeration PduType");
     return null;
   }
 
@@ -138,6 +138,6 @@ public enum PduType
   }
 
   public String toString() {
-    return "DISPDUType " + this.getValue() + " " + this.name();
+    return "PduType " + this.getValue() + " " + this.name();
   }
 }
