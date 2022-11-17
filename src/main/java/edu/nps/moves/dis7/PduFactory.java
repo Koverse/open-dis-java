@@ -274,6 +274,12 @@ public class PduFactory
                 case IFF_ATC_NAVAIDS:
                     aPdu = new IFFPdu();
                     break;
+                case DIRECTED_ENERGY_FIRE:
+                    aPdu = new DirectedEnergyFirePdu();
+                    break;
+                case ENTITY_DAMAGE_STATUS:
+                    aPdu = new EntityDamageStatusPdu();
+                    break;
                 default:
                     this.logger.log(Level.INFO, "PDU not implemented. Type = " + pduType + "\n");
                     if (pduTypeEnum != null) {
