@@ -5,9 +5,10 @@
 
 package edu.nps.moves.dis7;
 
-import edu.nps.moves.siso.EnumNotFoundException;
-
-import java.util.HashMap;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.nio.ByteBuffer;
 
 public enum PduType
 {
@@ -82,40 +83,12 @@ public enum PduType
   DIRECTED_ENERGY_FIRE(68, "Directed Energy Fire"),
   ENTITY_DAMAGE_STATUS(69, "Entity Damage Status");
 
-  public final int value;
-  public final String description;
-  public static PduType[] lookup = new PduType[71];
-  private static HashMap<Integer, PduType> enumerations = new HashMap();
+  private final int value;
+  private final String description;
 
   private PduType(int value, String description) {
     this.value = value;
     this.description = description;
-  }
-
-  public static String getDescriptionForValue(int aVal) {
-    PduType val = (PduType)enumerations.get(new Integer(aVal));
-    String desc;
-    if (val == null) {
-      desc = "Invalid enumeration: " + (new Integer(aVal)).toString();
-    } else {
-      desc = val.getDescription();
-    }
-
-    return desc;
-  }
-
-  public static PduType getEnumerationForValue(int aVal) throws EnumNotFoundException {
-    PduType val = (PduType)enumerations.get(aVal);
-    if (val == null) {
-      throw new EnumNotFoundException("no enumeration found for value " + aVal + " of enumeration PduType");
-    } else {
-      return val;
-    }
-  }
-
-  public static boolean enumerationForValueExists(int aVal) {
-    PduType val = (PduType)enumerations.get(aVal);
-    return val != null;
   }
 
   public int getValue() {
@@ -126,15 +99,45 @@ public enum PduType
     return this.description;
   }
 
-  static {
-    PduType[] arr$ = values();
-    int len$ = arr$.length;
+  public static int getEnumBitWidth() {
+    return 8;
+  }
 
-    for(int i$ = 0; i$ < len$; ++i$) {
-      PduType anEnum = arr$[i$];
-      lookup[anEnum.value] = anEnum;
-      enumerations.put(anEnum.getValue(), anEnum);
+  public static PduType getEnumForValue(int i) {
+    PduType[] var1 = values();
+    int var2 = var1.length;
+
+    for (PduType val : var1) {
+      if (val.getValue() == i) {
+        return val;
+      }
     }
 
+    System.err.println("No enumeration found for value " + i + " of enumeration DISPDUType");
+    return null;
+  }
+
+  public void marshal(DataOutputStream dos) throws IOException {
+    dos.writeByte(this.getValue());
+  }
+
+  public void marshal(ByteBuffer byteBuffer) throws Exception {
+    byteBuffer.put((byte)this.getValue());
+  }
+
+  public static PduType unmarshalEnum(DataInputStream dis) throws Exception {
+    return getEnumForValue(dis.readByte());
+  }
+
+  public static PduType unmarshalEnum(ByteBuffer byteBuffer) throws Exception {
+    return getEnumForValue(byteBuffer.get());
+  }
+
+  public int getMarshalledSize() {
+    return 1;
+  }
+
+  public String toString() {
+    return "DISPDUType " + this.getValue() + " " + this.name();
   }
 }

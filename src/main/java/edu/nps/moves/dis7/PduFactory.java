@@ -1,61 +1,6 @@
 package edu.nps.moves.dis7;
 
 
-import edu.nps.moves.dis7.AcknowledgePdu;
-import edu.nps.moves.dis7.AcknowledgeReliablePdu;
-import edu.nps.moves.dis7.ActionRequestPdu;
-import edu.nps.moves.dis7.ActionRequestReliablePdu;
-import edu.nps.moves.dis7.ActionResponsePdu;
-import edu.nps.moves.dis7.ActionResponseReliablePdu;
-import edu.nps.moves.dis7.ArealObjectStatePdu;
-import edu.nps.moves.dis7.CollisionElasticPdu;
-import edu.nps.moves.dis7.CollisionPdu;
-import edu.nps.moves.dis7.CommentPdu;
-import edu.nps.moves.dis7.CommentReliablePdu;
-import edu.nps.moves.dis7.CreateEntityPdu;
-import edu.nps.moves.dis7.CreateEntityReliablePdu;
-import edu.nps.moves.dis7.DataPdu;
-import edu.nps.moves.dis7.DataQueryPdu;
-import edu.nps.moves.dis7.DataQueryReliablePdu;
-import edu.nps.moves.dis7.DataReliablePdu;
-import edu.nps.moves.dis7.DesignatorPdu;
-import edu.nps.moves.dis7.DetonationPdu;
-import edu.nps.moves.dis7.ElectronicEmissionsPdu;
-import edu.nps.moves.dis7.EntityStatePdu;
-import edu.nps.moves.dis7.EntityStateUpdatePdu;
-import edu.nps.moves.dis7.EventReportPdu;
-import edu.nps.moves.dis7.EventReportReliablePdu;
-import edu.nps.moves.dis7.FastEntityStatePdu;
-import edu.nps.moves.dis7.FirePdu;
-import edu.nps.moves.dis7.IntercomControlPdu;
-import edu.nps.moves.dis7.IntercomSignalPdu;
-import edu.nps.moves.dis7.IsPartOfPdu;
-import edu.nps.moves.dis7.LinearObjectStatePdu;
-import edu.nps.moves.dis7.MinefieldResponseNackPdu;
-import edu.nps.moves.dis7.MinefieldStatePdu;
-import edu.nps.moves.dis7.Pdu;
-import edu.nps.moves.dis7.PointObjectStatePdu;
-import edu.nps.moves.dis7.ReceiverPdu;
-import edu.nps.moves.dis7.RecordQueryReliablePdu;
-import edu.nps.moves.dis7.RemoveEntityPdu;
-import edu.nps.moves.dis7.RemoveEntityReliablePdu;
-import edu.nps.moves.dis7.RepairCompletePdu;
-import edu.nps.moves.dis7.RepairResponsePdu;
-import edu.nps.moves.dis7.ResupplyOfferPdu;
-import edu.nps.moves.dis7.ResupplyReceivedPdu;
-import edu.nps.moves.dis7.SeesPdu;
-import edu.nps.moves.dis7.ServiceRequestPdu;
-import edu.nps.moves.dis7.SetDataPdu;
-import edu.nps.moves.dis7.SetDataReliablePdu;
-import edu.nps.moves.dis7.SignalPdu;
-import edu.nps.moves.dis7.StartResumePdu;
-import edu.nps.moves.dis7.StartResumeReliablePdu;
-import edu.nps.moves.dis7.StopFreezePdu;
-import edu.nps.moves.dis7.StopFreezeReliablePdu;
-import edu.nps.moves.dis7.TransmitterPdu;
-import edu.nps.moves.dis7.UaPdu;
-import edu.nps.moves.dis7.PduType;
-
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -111,7 +56,7 @@ public class PduFactory
             buff.position(pos + 2);
             int pduType = buff.get() & 255;
             buff.position(pos);
-            PduType pduTypeEnum = PduType.lookup[pduType];
+            PduType pduTypeEnum = PduType.getEnumForValue(pduType);
             Pdu aPdu = null;
             switch (pduTypeEnum) {
                 case ENTITY_STATE:
