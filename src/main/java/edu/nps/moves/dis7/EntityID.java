@@ -172,4 +172,9 @@ public void unmarshal(java.nio.ByteBuffer buff)
     {
         return Objects.hash(siteID, applicationID, entityID);
     }
+
+  @Override
+  public String toString() {
+    return String.format("%s.%s.%s", siteID, applicationID, entityID);
+  }
 } // end of class

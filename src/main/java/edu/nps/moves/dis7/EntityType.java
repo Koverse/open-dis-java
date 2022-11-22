@@ -232,4 +232,9 @@ public void unmarshal(java.nio.ByteBuffer buff)
 
     return ivarsEqual;
  }
+
+  @Override
+  public String toString() {
+    return String.format("%s.%s.%s.%s.%s", entityKind, domain, country, category, subcategory);
+  }
 } // end of class
