@@ -235,6 +235,6 @@ public void unmarshal(java.nio.ByteBuffer buff)
 
   @Override
   public String toString() {
-    return String.format("%s.%s.%s.%s.%s", entityKind, domain, country, category, subcategory);
+    return String.format("%s.%s.%s.%s.%s.%s.%s", entityKind, domain, country, category, subcategory, specific, extra);
   }
 } // end of class
