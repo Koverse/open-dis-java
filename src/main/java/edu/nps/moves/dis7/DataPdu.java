@@ -1,5 +1,6 @@
 package edu.nps.moves.dis7;
 
+import java.nio.BufferOverflowException;
 import java.util.*;
 import java.io.*;
 
@@ -233,8 +234,12 @@ public void unmarshal(java.nio.ByteBuffer buff)
        for(int idx = 0; idx < numberOfVariableDatumRecords; idx++)
        {
             VariableDatum anX = new VariableDatum();
-            anX.unmarshal(buff);
-            variableDatums.add(anX);
+            try {
+              anX.unmarshal(buff);
+              variableDatums.add(anX);
+            } catch (BufferOverflowException e) {
+              System.out.println("Error unmarshalling variableDatums, skipping...");
+            }
        }
 
  } // end of unmarshal method 
